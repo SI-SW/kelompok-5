@@ -23,6 +23,7 @@
     "@popperjs/core": "2.11.6",
     "axios": "^0.27.2",
     "bootstrap": "5.2.1",
+    "build": "^0.1.4",
     "chart.js": "3.9.1",
     "core-js": "3.25.1",
     "dropzone": "6.0.0-beta.2",
