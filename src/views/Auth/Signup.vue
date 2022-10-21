@@ -95,11 +95,11 @@
                 >or</p>
               </div>
             </div>
-            <div class="card-body">
-              <form role="form">
-                <argon-input type="text" placeholder="Name" aria-label="Name" />
-                <argon-input type="email" placeholder="Email" aria-label="Email" />
-                <argon-input type="password" placeholder="Password" aria-label="Password" />
+              <div class="card-body">
+              <form @submit.prevent="handleSubmit" role="form">
+                <argon-input type="text" placeholder="Name" name="name" v-model="this.input.name"  aria-label="Name" />
+                <argon-input type="email" placeholder="Email" v-model="this.input.email" aria-label="Email" />
+                <argon-input type="password" placeholder="Password" v-model="this.input.password" aria-label="Password" />
                 <argon-checkbox checked>
                   <label class="form-check-label" for="flexCheckDefault">
                     I agree the
@@ -115,7 +115,7 @@
                 <p class="text-sm mt-3 mb-0">
                   Already have an account?
                   <a
-                    href="javascript:;"
+                    href="signin"
                     class="text-dark font-weight-bolder"
                   >Sign in</a>
                 </p>
@@ -136,6 +136,8 @@ import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonCheckbox from "@/components/ArgonCheckbox.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
 const body = document.getElementsByTagName("body")[0];
+import { mapActions } from "pinia";
+import d$auth from "@/stores/auth";
 
 export default {
   name: "signin",
@@ -145,6 +147,29 @@ export default {
     ArgonInput,
     ArgonCheckbox,
     ArgonButton,
+  },
+  
+  data() {
+    return {
+      input: {
+        name: "",
+        email: "",
+        password: "",
+      },
+    };
+  },
+
+  methods:{
+    ...mapActions(d$auth, ["a$register"]),
+    async handleSubmit(){
+      try {
+        await this.a$register({ ...this.input });
+          alert("Register Berhasil");
+          this.$router.push('signin')
+        } catch (error) {
+        console.error("method addlist error", error);
+      }
+    }
   },
   created() {
     this.$store.state.hideConfigButton = true;
