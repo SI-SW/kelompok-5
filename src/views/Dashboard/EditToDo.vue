@@ -4,7 +4,7 @@
             <div class="col-9 position-absolute end-0 me-5">
                 <div class="container rounded-3">
                     <h1 class="py-4 text-center">Edit To Do</h1>
-                    <form class="container">
+                    <form class="container" @submit.prevent="editTodo">
                         <div class="mb-3">
                             <label>Nama:</label>
                             <input class="form-control" type="text" v-model="input.name"/>
@@ -26,8 +26,9 @@
 </template>
 
 <script>
-    import { mapActions } from 'pinia';
+    import { mapActions, mapState } from 'pinia';
     import d$todo from '@/stores/dashboard/todo';
+import { useRouter } from 'vue-router';
 
 
     export default {
@@ -37,14 +38,18 @@
                 name: '',
                 status: '',
                 description: ''
-            }
+            },
+            idtodo: useRouter().currentRoute.value.params.id,
         }),
+        computed: {
+            ...mapState(d$todo, ['g$list']),
+        },
         methods: {
-            // ...mapActions(d$todo, ['editlist']),
-            /*
+             ...mapActions(d$todo, ['editlist']),
+            
             async editTodo() {
                 try {
-                    await this.editlist(this.g$list.id);
+                    await this.editlist(this.idtodo, {...this.input});
                     this.$router.replace({name: 'Todo'});
                     console.log(this.input);
                 } catch (e) {
@@ -52,7 +57,7 @@
                     console.log(this.input);
                 }
             }
-            */
+            
         }
     }
 </script>
