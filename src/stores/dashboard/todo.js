@@ -17,9 +17,9 @@ const d$todo = defineStore({
                 throw e;
             }
         },
-        async editlist(id) {
+        async editlist(id, body) {
             try {
-                await s$todo.edit(id);
+                await s$todo.edit(id, body);
             } catch(e) {
                 console.error('actions todo list error', e);
                 console.log(body);
