@@ -40,8 +40,8 @@
             }
         }),
         methods: {
-            // ...mapActions(d$todo, ['editlist']),
-            /*
+            ...mapActions(d$todo, ['editlist']),
+            
             async editTodo() {
                 try {
                     await this.editlist(this.g$list.id);
@@ -52,7 +52,7 @@
                     console.log(this.input);
                 }
             }
-            */
+            
         }
     }
 </script>
