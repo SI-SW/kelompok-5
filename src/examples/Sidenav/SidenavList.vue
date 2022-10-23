@@ -67,6 +67,13 @@
         </sidenav-item>
       </li>
       <li class="nav-item">
+        <sidenav-item url="/dashboard/todo" :class="getRoute() === 'todo' ? 'active' : ''" :navText="this.$store.state.isRTL ? 'لوحة القيادة' : 'Todo'">
+          <template v-slot:icon>
+            <i class="ni ni-bullet-list-67 text-primary text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
         <sidenav-item
           url="/auth/signin"
           :class="getRoute() === 'signin' ? 'active' : ''"
@@ -87,17 +94,6 @@
             <i class="ni ni-collection text-info text-sm opacity-10"></i>
           </template>
         </sidenav-item>
-        <li class="nav-item">
-        <sidenav-item
-          url="/auth/todo"
-          :class="getRoute() === 'todo' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'تسجيل الدخول' : 'To Do'"
-        >
-          <template v-slot:icon>
-            <i class="ni ni-single-copy-04 text-danger text-sm opacity-10"></i>
-          </template>
-        </sidenav-item>
-      </li>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link" @click="logout">
@@ -109,13 +105,12 @@
       </li>
     </ul>
   </div>
-  <div class="pt-3 mx-3 mt-3 sidenav-footer">
+  <div class="pt-5 sidenav-footer">
     <sidenav-card
       :class="cardBg"
       textPrimary="Need Help?"
       textSecondary="Please check our docs"
     />
-    
   </div>
 </template>
 <script>
@@ -155,6 +150,6 @@ export default {
         console.log(error);
       }
     },
-  }
+  },
 };
 </script>

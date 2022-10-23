@@ -4,5 +4,7 @@ const api = '/api/todo';
 
 const list = () => baseApi.get(`${api}`);
 const del = (id) => baseApi.delete(`${api}/${id}`);
+const add = (body) => baseApi.post(`${api}`, body);
+const edit = (id) => baseApi.put(`${api}/${id}`);
 
-export { list, del };
+export { list, del, add, edit };

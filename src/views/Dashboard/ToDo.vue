@@ -13,10 +13,10 @@ import d$todo from '@/stores/dashboard/todo.js';
                 try {
                     await this.a$list();
                 } catch(e) {
-                    console.error('methods getList error', e);
+                    console.error('methods getList error', r);
                 }
             },
-            // ...mapActions(d$todo, ['a$del']),
+            ...mapActions(d$todo, ['a$del']),
         },
         async created() {
             await this.getList();
@@ -27,16 +27,17 @@ import d$todo from '@/stores/dashboard/todo.js';
 <template>
     <div> 
         <div class="py-4 px-3 container-fluid">
-            <div class=" row">
-                <div class="col-9 position-absolute end-0 me-5">
+            <div class="row">
+                <div class="col-15 position-relative end-0 me-5">
                     <div class="card">
-                        <div class="card-header pb-0">
+                        <div class="card-header pb-2">
                             <h6>Todo List Table</h6>
                         </div>
                         <div class="position-absolute end-0 me-5 mt-4">
-                            <!-- <RouterLink :to="{name:'Add To Do'}" class="btn btn-primary col-3 col-md-auto">Add</RouterLink> -->
+                            <RouterLink :to="{name:'Add To Do'}" class="btn btn-warning col-3 col-md-auto">Add</RouterLink>
                         </div>
-                        <div class="card-body px-0 pt-0 pb-2">
+                        
+                        <div class="card-body px-0 pt-5 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table align-items-center mb-0">
                                     <thead>
@@ -88,8 +89,10 @@ import d$todo from '@/stores/dashboard/todo.js';
                                                 data-original-title="Edit user"
                                                 >Edit</a>
                                                 -->
-
-                                                <button type="button" class="btn btn-warning text-xs me-1 col-md-auto">Edit</button>
+                                                <!--:to="'/edittodo/' + item.id"
+                                                :to="{name:'Edit To Do'}"-->
+                                               
+                                                <RouterLink  :to="{name:'Edit To Do'}" class="btn btn-info col-3 col-md-auto me-3">Edit</RouterLink>
                                                 <button type="button" @click="a$del(item.id)" class="btn btn-danger text-xs col-3 col-md-auto me-2">Delete</button>
                                             </td>
                                         </tr>
@@ -103,3 +106,5 @@ import d$todo from '@/stores/dashboard/todo.js';
         </div>
     </div>
 </template>
+<style>
+</style>

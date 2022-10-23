@@ -1,12 +1,31 @@
 import { defineStore } from "pinia";
-import * as s$todo from '@/services/dashboard/todo';
+
+import * as s$todo from '@/services/todo';
 
 const d$todo = defineStore({
     id: 'todo',
     state: () => ({
-        list: [],
+        list: []
     }),
     actions: {
+        async addlist(body) {
+            try {
+                await s$todo.add(body);
+            } catch(e) {
+                console.error('actions todo list error', e);
+                console.log(body);
+                throw e;
+            }
+        },
+        async editlist(id) {
+            try {
+                await s$todo.edit(id);
+            } catch(e) {
+                console.error('actions todo list error', e);
+                console.log(body);
+                throw e;
+            }
+        },
         async a$list() {
             try {
                 const { data } = await s$todo.list();
