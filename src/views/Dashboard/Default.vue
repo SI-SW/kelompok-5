@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="col-lg-5">
-            <Carousel />
+            <carousel />
           </div>
         </div>
         <div class="row mt-4">
