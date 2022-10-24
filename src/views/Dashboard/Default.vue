@@ -11,8 +11,7 @@
               :iconClass="stats.money.iconClass"
               :iconBackground="stats.money.iconBackground"
               :detail="stats.money.detail"
-              directionReverse
-            ></card>
+              directionReverse></card>
           </div>
           <div class="col-lg-3 col-md-6 col-12">
             <card
@@ -22,8 +21,7 @@
               :iconClass="stats.users.iconClass"
               :iconBackground="stats.users.iconBackground"
               :detail="stats.users.detail"
-              directionReverse
-            ></card>
+              directionReverse></card>
           </div>
           <div class="col-lg-3 col-md-6 col-12">
             <card
@@ -34,8 +32,7 @@
               :iconBackground="stats.clients.iconBackground"
               :percentageColor="stats.clients.percentageColor"
               :detail="stats.clients.detail"
-              directionReverse
-            ></card>
+              directionReverse></card>
           </div>
           <div class="col-lg-3 col-md-6 col-12">
             <card
@@ -45,8 +42,7 @@
               :iconClass="stats.sales.iconClass"
               :iconBackground="stats.sales.iconBackground"
               :detail="stats.sales.detail"
-              directionReverse
-            ></card>
+              directionReverse></card>
           </div>
         </div>
         <div class="row">
@@ -57,7 +53,7 @@
             </div>
           </div>
           <div class="col-lg-5">
-            <carousel />
+            <Carousel />
           </div>
         </div>
         <div class="row mt-4">
@@ -78,7 +74,9 @@
                             <img :src="sale.flag" alt="Country flag" />
                           </div>
                           <div class="ms-4">
-                            <p class="mb-0 text-xs font-weight-bold">Country:</p>
+                            <p class="mb-0 text-xs font-weight-bold">
+                              Country:
+                            </p>
                             <h6 class="mb-0 text-sm">{{ sale.country }}</h6>
                           </div>
                         </div>
@@ -119,7 +117,10 @@
 import Card from "@/examples/Cards/Card.vue";
 import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
 import Carousel from "@/components/examples/Carousel.vue";
-import CategoriesCard from "@/components/Examples/CategoriesCard.vue";
+import CategoriesCard from "@/components/examples/CategoriesCard.vue";
+
+//src\components\examples\Carousel.vue
+
 import US from "@/assets/img/icons/flags/US.png";
 import DE from "@/assets/img/icons/flags/DE.png";
 import GB from "@/assets/img/icons/flags/GB.png";
